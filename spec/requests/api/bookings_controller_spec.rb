@@ -20,35 +20,38 @@ RSpec.describe "Api::Bookings", type: :request do
       from_time:"12:00:00", 
       to_time: "14:00:00"
     }
-    it "should return success status" do
-      post '/api/bookings/create', params: request_params_success_case, as: :json
-      expect(response).to have_http_status(200)
+    context 'For Success' do
+      before do
+        post '/api/bookings/create', params: request_params_success_case, as: :json
+      end
+      it "should return success status" do
+        expect(response).to have_http_status(200)
+      end
+
+      it "should have success message" do
+        json_response = JSON.parse(response.body)
+        expect(json_response['message']).to eq("Booking Created Successfully")
+      end
     end
 
-    it "should have success message" do
-      post '/api/bookings/create', params: request_params_success_case, as: :json
-      json_response = JSON.parse(response.body)
-      expect(json_response['message']).to eq("Booking Created Successfully")
-    end
+    context 'For failure' do
+      before do
+        post '/api/bookings/create', params: request_params_failure_case, as: :json
+      end
 
-    it "should return failure status" do
-      post '/api/bookings/create', params: request_params_failure_case, as: :json
-      expect(response).to have_http_status(406)
-      json_response = JSON.parse(response.body)
-      expect(json_response['message']).to eq("Failed To Create Booking")
-      expect(json_response['errors']).not_to be_nil
-    end
+      it "should return failure status" do
+        expect(response).to have_http_status(406)
+      end
 
-    it "should have failure message" do
-      post '/api/bookings/create', params: request_params_failure_case, as: :json
-      json_response = JSON.parse(response.body)
-      expect(json_response['message']).to eq("Failed To Create Booking")
-    end
+      it "should have failure message" do
+        json_response = JSON.parse(response.body)
+        expect(json_response['message']).to eq("Failed To Create Booking")
+      end
 
-    it "should contain errors" do
-      post '/api/bookings/create', params: request_params_failure_case, as: :json
-      json_response = JSON.parse(response.body)
-      expect(json_response['errors']).not_to be_nil
+      it "should contain errors" do
+        json_response = JSON.parse(response.body)
+        expect(json_response['errors']).not_to be_nil
+      end
     end
 
   end
