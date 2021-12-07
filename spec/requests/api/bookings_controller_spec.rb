@@ -3,26 +3,20 @@ require 'rails_helper'
 RSpec.describe "Api::Bookings", type: :request do
   
   describe 'Create Booking' do
-    request_params_success_case = {
-      name: "user 1", 
-      email: "user1@mail.com", 
-      mobile: "98547854", 
-      booking_date: "2021/12/05", 
-      from_time:"12:00:00", 
-      to_time: "14:00:00"
-    }
+    let(:request_params) do
+      {
+        name: "user 1",
+        email: "user1@mail.com",
+        mobile: "98547854",
+        booking_date: "2021/12/05",
+        from_time:"12:00:00",
+        to_time: "14:00:00"
+      }
+    end
 
-    request_params_failure_case = {
-      name: "user 1", 
-      email: "aaa@eer.kk", 
-      mobile: "", 
-      booking_date: "2021/12/05", 
-      from_time:"12:00:00", 
-      to_time: "14:00:00"
-    }
     context 'For Success' do
       before do
-        post '/api/bookings/create', params: request_params_success_case, as: :json
+        post '/api/bookings/create', params: request_params, as: :json
       end
       it "should return success status" do
         expect(response).to have_http_status(200)
@@ -36,7 +30,8 @@ RSpec.describe "Api::Bookings", type: :request do
 
     context 'For failure' do
       before do
-        post '/api/bookings/create', params: request_params_failure_case, as: :json
+        request_params[:email] = nil
+        post '/api/bookings/create', params: request_params, as: :json
       end
 
       it "should return failure status" do
