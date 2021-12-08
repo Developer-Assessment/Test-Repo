@@ -18,7 +18,7 @@ Feature: Create Booking
     """
     And The response status should be "200"
 
-  Scenario: A user cann't create booking with out passing name
+  Scenario: A user cann't create booking without passing name
     When I send a POST request to "/api/bookings/create" with the following:
       | email| em@em.em |
       | mobile | 95456599 |
@@ -38,7 +38,7 @@ Feature: Create Booking
     """
     And The response status should be "406"
 
-    Scenario: A user cann't create booking with out passing email
+    Scenario: A user cann't create booking without passing email
       When I send a POST request to "/api/bookings/create" with the following:
         | name | test booking |
         | mobile | 95456599 |
@@ -58,7 +58,7 @@ Feature: Create Booking
       """
       And The response status should be "406"
 
-    Scenario: A user cann't create booking with out passing mobile
+    Scenario: A user cann't create booking without passing mobile
       When I send a POST request to "/api/bookings/create" with the following:
         | name | test booking |
         | email| em@em.em |
