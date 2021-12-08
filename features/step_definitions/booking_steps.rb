@@ -2,7 +2,7 @@ When(/^I send a POST request to "(.*)" with the following:$/) do |endpoint, tabl
   page.driver.post(endpoint, table.rows_hash)
 end
 
-Then(/^The following json response is sent:$/) do |message|
+Then(/^I receive following json response:$/) do |message|
   JSON.parse(page.body) == JSON.parse(message)
 end
 
