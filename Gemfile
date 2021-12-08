@@ -58,5 +58,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
   gem 'shoulda-matchers', require: false
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
+
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
 end
