@@ -11,14 +11,15 @@ RSpec.describe Booking, type: :model do
   end
 
   context 'scope tests' do
-    booking = FactoryBot.create(:booking)
-
+    let!(:booked) { FactoryBot.create(:booked) }
+    let!(:unbooked) { FactoryBot.create(:unbooked) }
+   
     it 'should return booked meeting rooms count' do
-      expect(Booking.booked.size).to eq(3)
+      expect(Booking.booked.size).to eq(1)
     end
 
     it 'should return available meeting rooms count' do
-      expect(Booking.unbooked.size).to eq(0)
+      expect(Booking.unbooked.size).to eq(1)
     end  
   end 
 
