@@ -8,5 +8,4 @@ RSpec.describe User, type: :model do
     it { should validate_length_of(:password).is_at_least(8).with_message("Your password must contain at least 8 characters")}
   
   end
-  
 end
