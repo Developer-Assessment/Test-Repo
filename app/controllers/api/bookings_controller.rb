@@ -1,6 +1,11 @@
 class Api::BookingsController < ApplicationController
   protect_from_forgery with: :null_session
 
+  def index
+    booking = Booking.all
+    render json: { message: "Success" }, status: 200
+  end  
+
   def create
     booking = Booking.new(booking_params)
     if booking&.save
