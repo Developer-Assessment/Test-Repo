@@ -1,6 +1,9 @@
 require 'rails_helper'
+require 'auth_helper'
 
 RSpec.describe "Api::Bookings", type: :request do
+  # login to http basic auth
+  include AuthHelper
   
   describe 'Create Booking' do
     let(:request_params) do
@@ -49,6 +52,17 @@ RSpec.describe "Api::Bookings", type: :request do
       end
     end
 
+  end
+
+  before(:each) do
+    http_login
+  end
+
+  describe "GET 'index'" do
+    it "should be successful" do
+      get api_bookings_index_path
+      expect(response).to have_http_status(200)
+    end
   end
 
 end
