@@ -7,11 +7,11 @@ FactoryBot.define do
     from_time { "12:00:00" }
     to_time { "14:00:00" }
 
-    factory :booked do
+    factory :booked_booking do
       status { 1 }
     end
 
-    factory :unbooked do
+    factory :unbooked_booking do
       status { 0 }
     end
   end
