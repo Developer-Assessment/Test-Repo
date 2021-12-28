@@ -5,7 +5,9 @@ describe Player do
 		player = Player.new
 		player.credits = 1.5
 		player.sub_credits(1.3)
-		expect(player.credits).to be_within(0.0001).of 0.19999
+		# player.sub_credits(0) Input For Custom Error
+		# expect(player.credits).to be_within(0.0001).of 0.19999
+		expect(player.credits).to eq(0.19999999999999996)
 	end	
 
 	it 'returns correct value for the players active status' do

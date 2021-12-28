@@ -21,7 +21,7 @@ describe "Rook" do
         rook_points = rook.points
         expect(rook_points).to be > 1
         # expect(rook_points).to be_between(1, 10).exclusive # It will fails for an input value of 1
-        expect(rook_points).to be_between(1, 10)
-        expect(rook_points).to be_between(1, 10).inclusive
+        # expect(rook_points).to be_between(1, 10) # Range comparision
+        # expect(rook_points).to be_between(1, 10).inclusive # It includes the value of 1
     end
 end	
