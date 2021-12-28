@@ -18,4 +18,5 @@ module CustomMatcher
   OurCustomMatcher.new(target)
   end	
 
-end	
+end
+

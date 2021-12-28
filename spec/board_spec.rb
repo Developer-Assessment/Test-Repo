@@ -9,4 +9,5 @@ RSpec.describe Board do
     		expect(b.total_pieces).to CustomMatcher.custom_matcher(32) # Using Custom Matcher
     	end	
     end	
-end	
+end
+

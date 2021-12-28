@@ -1,10 +1,9 @@
 class Book
   def book(book_details)
 
-  	if book_details == 'Ruby'
-  		return true
-  	end
-  	false	
+  	book_details == 'Ruby'
 
   end	
-end	
+end
+
+

@@ -21,4 +21,5 @@ describe Player do
         player.credits = 2
         expect {player.sub_credits(0)}.to raise_exception(StandardError)
 	end	
-end	
+end
+

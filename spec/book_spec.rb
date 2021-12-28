@@ -6,4 +6,5 @@ describe 'book' do
 		textbook = b.book('Ruby')
 		expect(textbook).to be_truthy
 	end	
-end	
+end
+

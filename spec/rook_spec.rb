@@ -24,4 +24,5 @@ describe "Rook" do
         # expect(rook_points).to be_between(1, 10) # Range comparision
         # expect(rook_points).to be_between(1, 10).inclusive # It includes the value of 1
     end
-end	
+end
+
