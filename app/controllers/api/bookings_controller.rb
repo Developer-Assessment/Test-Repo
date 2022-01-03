@@ -4,14 +4,14 @@ class Api::BookingsController < ApplicationController
   def create
     booking = Booking.new(booking_params)
     if booking&.save
-      render json: { message: "Booking Created Successfully", errors: nil}, status: 200
+      render json: { message: 'Booking Created Successfully', errors: nil }, status: 200
     else
-      render json: { message: "Failed To Create Booking", errors: booking&.errors&.messages}, status: 406
+      render json: { message: 'Failed To Create Booking', errors: booking&.errors&.messages }, status: 406
     end
-    
   end
 
   private
+
   def booking_params
     params.permit(:name, :email, :mobile, :booking_date, :from_time, :to_time)
   end
