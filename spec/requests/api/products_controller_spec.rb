@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe 'Api::Products', type: :request do
@@ -9,6 +7,19 @@ RSpec.describe 'Api::Products', type: :request do
         name: 'test product',
         code: 'PROD01'
       }
+    end
+
+    context 'To check object' do
+      let(:new_product) { Product.new(product_params) }
+      let(:create_product) { Product.create(product_params) }
+
+      it 'saves product' do
+        expect { create_product }.to change { Product.count }.by(1)
+      end
+
+      it 'initializes new object of product' do
+        expect(new_product).to be_an(Product)
+      end
     end
 
     context 'For Success' do
