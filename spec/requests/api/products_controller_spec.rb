@@ -43,19 +43,7 @@ RSpec.describe 'Api::Products', type: :request do
         post '/api/products/create', params: product_params
       end
 
-      it 'should return failure status' do
-        expect(response).to have_http_status(406)
-      end
-
-      it 'should have failure message' do
-        json_response = JSON.parse(response.body)
-        expect(json_response['message']).to eq('Failed To Create Product')
-      end
-
-      it 'should contain errors' do
-        json_response = JSON.parse(response.body)
-        expect(json_response['errors']).not_to be_nil
-      end
+      it_behaves_like 'checks failure status'
     end
 
     context 'For code validation failure' do
@@ -64,19 +52,7 @@ RSpec.describe 'Api::Products', type: :request do
         post '/api/products/create', params: product_params
       end
 
-      it 'should return failure status' do
-        expect(response).to have_http_status(406)
-      end
-
-      it 'should have failure message' do
-        json_response = JSON.parse(response.body)
-        expect(json_response['message']).to eq('Failed To Create Product')
-      end
-
-      it 'should contain errors' do
-        json_response = JSON.parse(response.body)
-        expect(json_response['errors']).not_to be_nil
-      end
+      it_behaves_like 'checks failure status'
     end
   end
 end
