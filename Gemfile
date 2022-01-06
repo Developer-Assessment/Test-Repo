@@ -63,3 +63,10 @@ group :development, :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
 end
+
+group :development, :test do
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec' # or gem 'rubocop-minitest'
+end

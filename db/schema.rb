@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_20_054525) do
+ActiveRecord::Schema.define(version: 2021_12_28_045044) do
 
   create_table "bookings", charset: "latin1", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 2021_12_20_054525) do
     t.date "booking_date"
     t.time "from_time"
     t.time "to_time"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "products", charset: "utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
     t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
