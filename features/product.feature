@@ -3,22 +3,22 @@ Feature: Product Creation
   Creating a product
 
   Scenario: I want to create a product with all required parameters
-    When To create product I send a POST request to "api/products/create" with following parameters
+    When I send a POST request to "api/products/create" with the following:
       | name | prod-11 |
       | code | PROD11  |
-    Then I receive following JSON response from create product API
+    Then I receive following json response:
     """
     {
       "message": "Product Created Successfully",
       "errors": null
     }
     """
-    And The response status of create product API should be "201"
+    And The response status should be "201"
   
   Scenario: I won't be able to create product without name
-    When To create product I send a POST request to "api/products/create" with following parameters
+    When I send a POST request to "api/products/create" with the following:
       | code | PROD11  |
-    Then I receive following JSON response from create product API
+    Then I receive following json response:
     """
     {
       "message": "Failed To Create Product",
@@ -29,12 +29,12 @@ Feature: Product Creation
       }
     }
     """
-    And The response status of create product API should be "406"
+    And The response status should be "406"
 
   Scenario: I won't be able to create product without code
-    When To create product I send a POST request to "api/products/create" with following parameters
+    When I send a POST request to "api/products/create" with the following:
       | name | PROD-11 |
-    Then I receive following JSON response from create product API
+    Then I receive following json response:
     """
     {
       "message": "Failed To Create Product",
@@ -45,4 +45,4 @@ Feature: Product Creation
       }
     }
     """
-    And The response status of create product API should be "406"
+    And The response status should be "406"
